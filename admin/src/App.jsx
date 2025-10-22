@@ -19,35 +19,38 @@ function App() {
   const {aToken} = useContext(AdminContext)
   const {dToken} = useContext(DoctorContext)
 
-  return aToken || dToken ? (
-    <div className=' container-fluid'>
-      <ToastContainer/>
-      <Navbar/>
-      <div className='row'>
-        <div className='col-12 col-md-3 col-lg-2 p-0'>
-          <Sidebar/>
-        </div>
-        <div className="col-12 col-md-9 bg-light col-lg-10">
-          <Routes>
-            {/* {Admin Route} */}
-            <Route path='/' element={<></>}/>
-            <Route path='/admin-dashboard' element={<Dashboard/>}/>
-            <Route path='/all-appointments' element={<AllAppointments/>}/>
-            <Route path='/add-doctor' element={<AddDoctor/>}/>
-            <Route path='/doctor-list' element={<DoctorsList/>}/>
-            
-            {/* {Doctor Route} */}
-            <Route path='/doctor-dashboard' element={<DoctorDashboard/>}/>
-            <Route path='/doctor-appointments' element={<DoctorAppointments/>}/>
-            <Route path='/doctor-profile' element={<DoctorProfile/>}/>
-          </Routes>
-        </div>
-      </div>
-    </div>
-  ) : (
+  return (
     <>
-      <Login/>
-      <ToastContainer/> 
+      <ToastContainer/>
+      { 
+        aToken || dToken ? (
+          <div className=' container-fluid'>
+            <Navbar/>
+            <div className='row'>
+              <div className='col-12 col-md-3 col-lg-2 p-0'>
+                <Sidebar/>
+              </div>
+              <div className="col-12 col-md-9 bg-light col-lg-10">
+                <Routes>
+                  {/* {Admin Route} */}
+                  <Route path='/' element={<></>}/>
+                  <Route path='/admin-dashboard' element={<Dashboard/>}/>
+                  <Route path='/all-appointments' element={<AllAppointments/>}/>
+                  <Route path='/add-doctor' element={<AddDoctor/>}/>
+                  <Route path='/doctor-list' element={<DoctorsList/>}/>
+
+                  {/* {Doctor Route} */}
+                  <Route path='/doctor-dashboard' element={<DoctorDashboard/>}/>
+                  <Route path='/doctor-appointments' element={<DoctorAppointments/>}/>
+                  <Route path='/doctor-profile' element={<DoctorProfile/>}/>
+                </Routes>
+              </div>
+            </div>
+          </div>
+        ) : (
+          <Login/>
+        )
+      }
     </>
   )
 }
