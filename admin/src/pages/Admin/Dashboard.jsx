@@ -40,24 +40,26 @@ function Dashboard () {
             <div className="bg-white shadow rounded-4 py-4">
                 <div className=" d-flex align-items-center gap-3 px-4 py-2 rounded-top">
                     <img src={assets.list_icon} alt="" />
-                    <p className="mb-0 fw-semibold">Latest Booking</p>
+                    <p className="mb-1 fw-semibold">Latest Booking</p>
                 </div>
                 <div className="pb-2 borde-top">
                     {
                         dashData.latestAppointments.map((item, index)=>(
-                            <div className=" d-flex align-items-center gap-2 px-4" key={index}>
-                                <img src={item.docData.image} alt="" style={{width:'80px', height:'80px', backgroundSize:'contain'}} />
+                            <div className=" d-flex align-items-center gap-4 px-4" key={index}>
+                                <img src={item.docData.image} alt="" className="mb-4" style={{width:'80px', height:'80px', backgroundSize:'contain'}} />
                                 <div className=" flex-grow-1">
                                     <p className=" text-secondary fw-medium">{item.docData.name}</p>
                                     <p className=" text-secondary">{slotDateFormat(item.slotDate)}</p>
                                 </div>
-                                {
-                                    item.cancelled
-                                    ?<button className=" btn btn-outline-danger" disabled>Cancelled</button>
-                                    : item.isCompleted
-                                        ? <button className="btn btn-outline-success" disabled>Completed</button>
-                                        : <button onClick={()=>cancelAppointment(item._id)} className=" btn-close"></button>
-                                }
+                                <div>
+                                    {
+                                        item.cancelled
+                                            ?<button className=" btn btn-outline-danger" disabled>Cancelled</button>
+                                            : item.isCompleted
+                                                ? <button className="btn btn-outline-success" disabled>Completed</button>
+                                                : <button onClick={()=>cancelAppointment(item._id)} className=" btn-close"></button>
+                                    }
+                                </div>
                             </div>
                         ))
                     }

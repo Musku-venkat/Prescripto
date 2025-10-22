@@ -18,7 +18,7 @@ function Navbar (){
     return(
         <>
             <div className="container d-flex align-items-center justify-content-between py-3 mb-3 border-bottom position-sticky top-0 bg-white" style={{zIndex:'1'}}>
-                <NavLink to={'/'} className="text-black"><img src={assets.logo} alt="" width='80%' /></NavLink>
+                <NavLink onClick={()=>scrollTo(0,0)} className="text-black"><img src={assets.logo} alt="" width='80%' /></NavLink>
                 <ul className="navbar-nav d-none d-lg-flex flex-row gap-5">
                     <NavLink to='/'>
                         <li>Home</li>
@@ -37,7 +37,7 @@ function Navbar (){
                     {
                         token && userData
                         ? <div className="dropdown d-flex align-items-center justify-content-center gap-2">
-                            <img src={userData.image} alt="" className="rounded-5 dropdown-toggle" role="button" data-bs-toggle="dropdown" style={{width:'60px', height:'60px', borderRadius:'50%', backgroundSize:'cover'}}/>
+                            <img src={userData.image} alt="" className="rounded-5 dropdown-toggle" role="button" data-bs-toggle="dropdown" style={{width:'50px', height:'50px', borderRadius:'50%', backgroundSize:'cover'}}/>
                             <ul className="dropdown-menu top-50">
                                 <li><NavLink to='/my-profile' className="dropdown-item">My Profile</NavLink></li>
                                 <li><NavLink to='/my-appointments' className="dropdown-item">My Appointments</NavLink></li>

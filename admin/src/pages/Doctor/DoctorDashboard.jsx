@@ -47,7 +47,7 @@ function DoctorDashboard () {
                     {
                         dashData.latestAppointments.map((item, index)=>(
                             <div className=" d-flex align-items-center gap-4 px-4 py-2" key={index}>
-                                <img className=" rounded-5" src={item.userData.image} alt="" style={{width:'80px', height:'80px', backgroundSize:'cover'}} />
+                                <img className="mb-3" src={item.userData.image} alt=""  style={{width:'80px', height:'80px', borderRadius:'50%', backgroundSize:'cover'}} />
                                 <div className=" flex-grow-1">
                                     <p className=" text-secondary fw-medium">{item.userData.name}</p>
                                     <p className=" text-secondary">{slotDateFormat(item.slotDate)}</p>

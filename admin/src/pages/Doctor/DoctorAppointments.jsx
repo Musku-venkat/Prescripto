@@ -16,10 +16,10 @@ function DoctorAppointments() {
     return(
         <div className="my-4 mx-2">
             <p>All Appointments</p>
-            <table className="table text-center align-middle shadow-lg">
+            <table className="table table-start align-middle shadow-lg">
                 <thead className=" overflow-scroll">
                     <tr>
-                        <th>#</th>
+                        <th>S.No</th>
                         <th>Patient</th>
                         <th>Age</th>
                         <th>Date & Time</th>
@@ -34,9 +34,9 @@ function DoctorAppointments() {
                         <tr key={index}>
                             <td>{index+1}</td>
                             <td>
-                                <img className=" rounded-5" src={item.userData.image} alt="" style={{width:'80px', height:'80px', backgroundSize:'contain'}}/> <span>{item.userData.name}</span>
+                                <img className="me-2 " src={item.userData.image} alt="" style={{width:'70px', height:'70px', borderRadius:'50%', backgroundSize:'contain'}}/> <span>{item.userData.name}</span>
                             </td>
-                            <td className=" rounded-5 text-secondary fs-6">{item.payment ? 'Online' : 'Cash'}</td>
+                            <td className=" text-secondary fs-6">{item.payment ? 'Online' : 'Cash'}</td>
                             <td>{calculateAge(item.userData.dob)}</td>
                             <td>{slotDateFormat(item.slotDate)}, {item.slotTime}</td>
                             <td>{currency} {item.amount}</td>
