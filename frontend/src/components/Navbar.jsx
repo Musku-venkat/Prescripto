@@ -9,9 +9,8 @@ function Navbar (){
     const {token, setToken, userData} = useContext(AppContext)
 
     const logout = function (){
-        localStorage.removeItem('token')
-        navigate('/')
-        setToken(false)
+        token && setToken('')
+        token && localStorage.removeItem('token')
     }
 
     return(
