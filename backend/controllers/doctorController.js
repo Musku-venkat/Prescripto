@@ -51,7 +51,7 @@ const loginDoctor = async function (req, res) {
         }
         
         const token = jwt.sign({id:doctor._id}, process.env.JWT_SECRET, { expiresIn: '1d'})
-        res.json({success:true, token})
+        res.json({success:true, message:'Login successfull', token})
 
     } catch(error) {
         console.error(error);

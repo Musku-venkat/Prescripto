@@ -2,6 +2,7 @@ import { NavLink, useNavigate } from "react-router-dom";
 import {assets} from '../assets/assets_frontend/assets';
 import { useContext, useState } from "react";
 import { AppContext } from "../context/AppContext";
+import { toast } from 'react-toastify';
 
 function Navbar (){
     const navigate = useNavigate()
@@ -11,6 +12,7 @@ function Navbar (){
     const logout = function (){
         token && setToken('')
         token && localStorage.removeItem('token')
+        toast.success('Logout successfull')
     }
 
     return(

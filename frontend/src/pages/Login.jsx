@@ -17,10 +17,10 @@ function Login (){
         e.preventDefault()
 
         try {
-
             if(state === 'Sign Up'){
                 const {data} = await axios.post(`${backendUrl}/api/user/register`, {name, email, password})
                 if(data.success) {
+                    toast.success(data.message || 'Account created successful!')
                     localStorage.setItem('token', data.token)
                     setToken(data.token)
                 } else{
@@ -29,6 +29,7 @@ function Login (){
             } else {
                 const {data} = await axios.post(`${backendUrl}/api/user/login`, {email, password})
                 if(data.success) {
+                    toast.success(data.message || 'Login successful!')
                     localStorage.setItem('token', data.token)
                     setToken(data.token)
                 } else{

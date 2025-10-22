@@ -20,6 +20,8 @@ function Login() {
 
                 const {data} = await axios.post(backendUrl + '/api/admin/login', {email, password});
                 if(data.success){
+                    console.log(data)
+                    toast.success(data.message || 'Login successful!')
                     localStorage.setItem('atoken', data.token);
                     setAToken(data.token);
                 } else {
@@ -29,6 +31,7 @@ function Login() {
 
                 const {data} = await axios.post(`${backendUrl}/api/doctor/login`, { email, password })
                 if(data.success){
+                    toast.success(data.message || 'Login successful!')
                     localStorage.setItem('dtoken', data.token);
                     setDToken(data.token);
                 } else {

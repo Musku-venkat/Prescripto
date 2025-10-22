@@ -3,6 +3,7 @@ import { assets } from "../assets/assets";
 import { AdminContext } from "../context/AdminContext";
 import { useNavigate, Link } from "react-router-dom";
 import { DoctorContext } from "../context/DoctorContext";
+import { toast } from 'react-toastify'
 
 function Navbar () {
     const {aToken, setAToken} = useContext(AdminContext)
@@ -15,6 +16,7 @@ function Navbar () {
         aToken && localStorage.removeItem('aToken')
         dToken && setDToken('')
         dToken && localStorage.removeItem('dToken')
+        toast.success('Logout Successfull!')
     }
 
     return(
