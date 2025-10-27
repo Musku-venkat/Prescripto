@@ -1,5 +1,5 @@
 import { Route, Routes } from "react-router-dom";
-import '../src/index.css'
+import '../src/index.css';
 import Home from "./pages/Home";
 import Doctors from "./pages/Doctors";
 import Login from "./pages/Login";
@@ -11,7 +11,7 @@ import Appointment from "./pages/Appointment";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import { ToastContainer } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css'
+import 'react-toastify/dist/ReactToastify.css';
 
 function App() {
 

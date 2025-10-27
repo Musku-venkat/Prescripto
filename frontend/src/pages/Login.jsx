@@ -9,9 +9,14 @@ function Login (){
     const [name, setName] = useState('')
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
+    const [showPassword, setShowPassword] = useState(false);
     const navigate = useNavigate()
 
     const {backendUrl, token, setToken} = useContext(AppContext)
+
+    const handlePassword = function () {
+        setShowPassword(!showPassword);
+    }
 
     const handleSubmit = async function (e) {
         e.preventDefault()
@@ -57,16 +62,20 @@ function Login (){
                 {
                     state === 'Sign Up' && <div className="w-100">
                         <p>Full Name:</p>
-                        <input type="text" className=" border rounded w-100 p-1 mt-2" onChange={(event)=>setName(event.target.value)} value={name} placeholder="Enter a full name..." required/>
+                        <input type="text" className=" form-control" onChange={(event)=>setName(event.target.value)} value={name} placeholder="Enter a full name..." required/>
                     </div>
                 }
                 <div className="w-100">
                     <p>Email:</p>
-                    <input type="email" className=" border rounded w-100 p-1 mt-2" onChange={(event)=>setEmail(event.target.value)} value={email} placeholder="Enter email address..." required/>
+                    <input type="email" className=" form-control" onChange={(event)=>setEmail(event.target.value)} value={email} placeholder="Enter email address..." required/>
                 </div>
                 <div className="w-100 mb-2">
                     <p>Password:</p>
-                    <input type="password" className=" border rounded w-100 p-1 mt-2" onChange={(event)=>setPassword(event.target.value)} value={password} placeholder="Enter a password..." required/>
+                    <input type={showPassword ? 'text' : 'password'} className="form-control" onChange={(event)=>setPassword(event.target.value)} value={password} placeholder="Enter a password..." required/>
+                    <div>
+                        <input type="checkbox" checked={showPassword} onChange={handlePassword}/>
+                        <label className="ms-2 form-text">Show Password</label>
+                    </div>
                 </div>
                 <button type="submit" className="btn px-4 py-2" style={{backgroundColor:'#3396D3', color:'white'}}>{state === 'Sign Up' ? 'Create Account' : 'Login'}</button>
                 <div className="my-2">

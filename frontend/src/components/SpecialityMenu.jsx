@@ -4,7 +4,7 @@ import { specialityData } from "../assets/assets_frontend/assets";
 function SpecialityMenu (){
     return(
         <>
-            <div id="speciality" className="d-flex flex-column align-items-center justify-content-center gap-2 m-5">
+            <div id="speciality" className="d-flex flex-column align-items-center justify-content-center gap-2 mb-5">
                 <h3>Find by Speciality</h3>
                 <p className="text-center w-50 w-md-100 mb-4">Simply browse through our extensive list of trusted doctors, schedule your appointment hassle-free.</p>
                 <div className="d-flex justify-content-center align-items-center">

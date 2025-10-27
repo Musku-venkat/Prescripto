@@ -1,19 +1,20 @@
 import { useContext, useEffect } from "react";
 import { AdminContext } from "../../context/AdminContext";
+import Spinner from "../../components/Spinner";
 
 function DoctorsList () {
-    const { doctors, aToken, getAllDoctors, changeAvailability } = useContext(AdminContext)
+    const { doctors, aToken, getAllDoctors, changeAvailability } = useContext(AdminContext);
 
     useEffect(()=>{
         if(aToken){
-            getAllDoctors()
+            getAllDoctors();
         }
-    }, [aToken])
+    }, [aToken]);
 
     return(
         <div className="m-4">
             <h6>All Doctors</h6>
-            <div className="d-flex flex-wrap gap-2 pt-2">
+            <div className="d-flex flex-wrap justify-content-center gap-2 pt-2">
                 {
                     doctors.length > 0 ? (
                         doctors.map((item, index)=>(
@@ -31,6 +32,7 @@ function DoctorsList () {
                         ))
                     ) : (
                         <p className="text-muted">No doctors found.</p>
+                        // <Spinner/>
                     )
                 }
             </div>

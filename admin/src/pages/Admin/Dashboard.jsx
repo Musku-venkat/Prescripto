@@ -1,8 +1,9 @@
 import { useContext } from "react";
 import { AdminContext } from "../../context/AdminContext";
 import { useEffect } from "react";
-import {assets} from '../../assets/assets'
+import {assets} from '../../assets/assets';
 import { AppContext } from "../../context/AppContext";
+import Spinner from '../../components/Spinner';
 
 function Dashboard () {
     const {aToken, dashData, getDashData, cancelAppointment} = useContext(AdminContext)
@@ -44,25 +45,29 @@ function Dashboard () {
                 </div>
                 <div className="pb-2 borde-top">
                     {
-                        dashData.latestAppointments.map((item, index)=>(
-                            <div className=" d-flex align-items-center gap-4 px-4" key={index}>
-                                <img src={item.docData.image} alt="" className="mb-4" style={{width:'80px', height:'80px', backgroundSize:'contain'}} />
-                                <div className=" flex-grow-1">
-                                    <p className=" text-secondary fw-medium">{item.docData.name}</p>
-                                    <p className=" text-secondary">{slotDateFormat(item.slotDate)}</p>
+                        dashData.latestAppointments.length > 0 ? (
+                            dashData.latestAppointments.map((item, index)=>(
+                                <div className=" d-flex align-items-center gap-4 px-4" key={index}>
+                                    <img src={item.docData.image} alt="" className="mb-4" style={{width:'80px', height:'80px', backgroundSize:'contain'}} />
+                                    <div className=" flex-grow-1">
+                                        <p className=" text-secondary fw-medium">{item.docData.name}</p>
+                                        <p className=" text-secondary">{slotDateFormat(item.slotDate)}</p>
+                                    </div>
+                                    <div>
+                                        {
+                                            item.cancelled
+                                                ?<button className=" btn btn-outline-danger" disabled>Cancelled</button>
+                                                : item.isCompleted
+                                                    ? <button className="btn btn-outline-success" disabled>Completed</button>
+                                                    : <button onClick={()=>cancelAppointment(item._id)} className=" btn-close"></button>
+                                        }
+                                    </div>
                                 </div>
-                                <div>
-                                    {
-                                        item.cancelled
-                                            ?<button className=" btn btn-outline-danger" disabled>Cancelled</button>
-                                            : item.isCompleted
-                                                ? <button className="btn btn-outline-success" disabled>Completed</button>
-                                                : <button onClick={()=>cancelAppointment(item._id)} className=" btn-close"></button>
-                                    }
-                                </div>
-                            </div>
-                        ))
-                    }
+                            ))
+                        ) : (
+                            <Spinner/>
+                        )
+                    }   
                 </div>
             </div>
         </div>

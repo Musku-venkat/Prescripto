@@ -2,6 +2,7 @@ import { useContext, useEffect, useState } from "react";
 import { AppContext } from "../context/AppContext";
 import { toast } from "react-toastify";
 import axios from "axios";
+import Spinner from '../components/Spinner';
 
 function MyAppointments (){
     const {backendUrl, token, getDoctorsData} = useContext(AppContext)
@@ -56,43 +57,47 @@ function MyAppointments (){
             <p className="fw-medium border-bottom pb-2">My Appointments</p>
             <div className="my-4">
                 {
-                    appointments.map((item, index)=>(
-                        <div key={index} className="mb-4 ">
-                            <div className="special-2 border p-2 rounded-2">
-                                <div className="bg-primary rounded-2">
-                                    <img className="h-100" src={item.docData.image} alt="" width={'100%'} />
-                                </div>
-                                <div className=" d-flex flex-column justify-content-center h-100">
-                                    <p className=" fw-semibold fs-5">{item.docData.name}</p>
-                                    <p>{item.docData.speciality}</p>
-                                    <p className="mt-2 fw-semibold">Address:</p>
-                                    <p className="text-secondary">{item.docData.address.line1}</p>
-                                    <p className="text-secondary">{item.docData.address.line2}</p>
-                                    <p className="mt-2"><span className="fw-semibold">Date & Time: </span>{slotDateFormat(item.slotDate)} | {item.slotTime}</p>
-                                </div>
-                                <div className=" d-flex align-items-center">
-                                    <div className="text-center me-4">
-                                        {
-                                            !item.cancelled && !item.isCompleted &&
-                                            <button className="btn btn-outline-primary px-4 py-2 w-100 mb-4">Pay Online</button>
-                                        }
-                                        {
-                                            !item.cancelled && !item.isCompleted &&
-                                            <button onClick={()=>cancelAppointment(item._id)} className="btn btn-outline-danger px-4 py-2 w-100">Cancel appointment</button>
-                                        }
-                                        {
-                                            item.cancelled && !item.isCompleted &&
-                                            <button className=" btn btn-outline-danger px-4 py-2 w-100" disabled>Appointment cancelled</button>
-                                        }
-                                        {
-                                            item.isCompleted && 
-                                            <button className=" btn btn-outline-success px-4 py-2 text-success w-100" disabled>Completed</button>   
-                                        }
+                    appointments.length > 0 ? (
+                        appointments.map((item, index)=>(
+                            <div key={index} className="mb-4 ">
+                                <div className="special-2 border p-2 rounded-2">
+                                    <div className="bg-primary rounded-2">
+                                        <img className="h-100" src={item.docData.image} alt="" width={'100%'} />
+                                    </div>
+                                    <div className=" d-flex flex-column justify-content-center h-100">
+                                        <p className=" fw-semibold fs-5">{item.docData.name}</p>
+                                        <p>{item.docData.speciality}</p>
+                                        <p className="mt-2 fw-semibold">Address:</p>
+                                        <p className="text-secondary">{item.docData.address.line1}</p>
+                                        <p className="text-secondary">{item.docData.address.line2}</p>
+                                        <p className="mt-2"><span className="fw-semibold">Date & Time: </span>{slotDateFormat(item.slotDate)} | {item.slotTime}</p>
+                                    </div>
+                                    <div className=" d-flex align-items-center">
+                                        <div className="text-center me-4">
+                                            {
+                                                !item.cancelled && !item.isCompleted &&
+                                                <button className="btn btn-outline-primary px-4 py-2 w-100 mb-4">Pay Online</button>
+                                            }
+                                            {
+                                                !item.cancelled && !item.isCompleted &&
+                                                <button onClick={()=>cancelAppointment(item._id)} className="btn btn-outline-danger px-4 py-2 w-100">Cancel appointment</button>
+                                            }
+                                            {
+                                                item.cancelled && !item.isCompleted &&
+                                                <button className=" btn btn-outline-danger px-4 py-2 w-100" disabled>Appointment cancelled</button>
+                                            }
+                                            {
+                                                item.isCompleted && 
+                                                <button className=" btn btn-outline-success px-4 py-2 text-success w-100" disabled>Completed</button>   
+                                            }
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                    ))
+                        ))
+                    ) : (
+                        <Spinner/>
+                    )
                 }
             </div>
         </div>

@@ -12,19 +12,19 @@ function Sidebar () {
         <div className="border-end" style={{position:'sticky', top:'82px'}}>
             {
                 aToken && <ul className="d-flex flex-md-column">
-                    <NavLink to={'/admin-dashboard'} className={({isActive})=>`d-flex align-items-center py-3 text-decoration-none text-secondary mt-2 ${isActive ? ' border-end bg-light border-primary' : ''}`}>
+                    <NavLink to={'/admin-dashboard'} onClick={()=>scrollTo(0,0)} className={({isActive})=>`d-flex align-items-center py-3 text-decoration-none text-secondary mt-2 ${isActive ? ' border-end bg-light border-primary' : ''}`}>
                         <img src={assets.home_icon} alt="" className=" me-3" title="Admin Dashboard" />
                         <p className="mb-0 d-md-block d-none">Dashboard</p>
                     </NavLink>
-                    <NavLink to={'/all-appointments'} className={({isActive})=>`d-flex align-items-center py-3 text-decoration-none text-secondary mt-2 ${isActive ? ' border-end bg-light border-primary' : ''}`}>
+                    <NavLink to={'/all-appointments'} onClick={()=>scrollTo(0,0)} className={({isActive})=>`d-flex align-items-center py-3 text-decoration-none text-secondary mt-2 ${isActive ? ' border-end bg-light border-primary' : ''}`}>
                         <img src={assets.appointment_icon} alt="" className=" me-3" title="All Appointments"/>
                         <p className="mb-0 d-md-block d-none">Appointments</p>
                     </NavLink>
-                    <NavLink to={'/add-doctor'} className={({isActive})=>`d-flex align-items-center py-3 text-decoration-none text-secondary mt-2 ${isActive ? ' border-end bg-light border-primary' : ''}`}>
+                    <NavLink to={'/add-doctor'} onClick={()=>scrollTo(0,0)} className={({isActive})=>`d-flex align-items-center py-3 text-decoration-none text-secondary mt-2 ${isActive ? ' border-end bg-light border-primary' : ''}`}>
                         <img src={assets.add_icon} alt="" className=" me-3" title="Add Doctors"/>
                         <p className="mb-0 d-md-block d-none">Add Doctor</p>
                     </NavLink>
-                    <NavLink to={'/doctor-list'} className={({isActive})=>`d-flex align-items-center py-3 text-decoration-none text-secondary mt-2 ${isActive ? ' border-end bg-light border-primary' : ''}`}>
+                    <NavLink to={'/doctor-list'} onClick={()=>scrollTo(0,0)} className={({isActive})=>`d-flex align-items-center py-3 text-decoration-none text-secondary mt-2 ${isActive ? ' border-end bg-light border-primary' : ''}`}>
                         <img src={assets.people_icon} alt="" className=" me-3" title="Doctor List" />
                         <p className="mb-0 d-md-block d-none">Doctors List</p>
                     </NavLink>
@@ -32,15 +32,15 @@ function Sidebar () {
             }
             {
                 dToken && <ul  className="d-flex flex-md-column">
-                    <NavLink to={'/doctor-dashboard'} className={({isActive})=>`d-flex align-items-center py-3 text-decoration-none text-secondary mt-2 ${isActive ? ' border-end bg-light border-primary' : ''}`}>
+                    <NavLink to={'/doctor-dashboard'} onClick={()=>scrollTo(0,0)} className={({isActive})=>`d-flex align-items-center py-3 text-decoration-none text-secondary mt-2 ${isActive ? ' border-end bg-light border-primary' : ''}`}>
                         <img src={assets.home_icon} alt="" className=" me-3" title="Doctor Dashboard" />
                         <p className="mb-0 d-md-block d-none">Dashboard</p>
                     </NavLink>
-                    <NavLink to={'/doctor-appointments'} className={({isActive})=>`d-flex align-items-center py-3 text-decoration-none text-secondary mt-2 ${isActive ? ' border-end bg-light border-primary' : ''}`}>
+                    <NavLink to={'/doctor-appointments'} onClick={()=>scrollTo(0,0)} className={({isActive})=>`d-flex align-items-center py-3 text-decoration-none text-secondary mt-2 ${isActive ? ' border-end bg-light border-primary' : ''}`}>
                         <img src={assets.appointment_icon} alt="" className=" me-3" title="Doctor Appointments"/>
                         <p className="mb-0 d-md-block d-none">Appointments</p>
                     </NavLink>
-                    <NavLink to={'/doctor-profile'} className={({isActive})=>`d-flex align-items-center py-3 text-decoration-none text-secondary mt-2 ${isActive ? ' border-end bg-light border-primary' : ''}`}>
+                    <NavLink to={'/doctor-profile'} onClick={()=>scrollTo(0,0)} className={({isActive})=>`d-flex align-items-center py-3 text-decoration-none text-secondary mt-2 ${isActive ? ' border-end bg-light border-primary' : ''}`}>
                         <img src={assets.people_icon} alt="" className=" me-3" title="Doctor Profile" />
                         <p className="mb-0 d-md-block d-none">Profile</p>
                     </NavLink>

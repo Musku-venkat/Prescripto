@@ -1,6 +1,7 @@
 import { useContext, useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { AppContext } from "../context/AppContext";
+import Spinner from "../components/Spinner";
 
 function Doctors (){
     const {speciality} = useParams()
@@ -63,7 +64,8 @@ function Doctors (){
                                     </div>
                                 ))
                             ) : (
-                                <p className="text-muted">No doctors available.</p>
+                                // <p className="text-muted">No doctors available.</p>
+                                <Spinner/>
                             )
                         }
                     </div>
